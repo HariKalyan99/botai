@@ -7,11 +7,15 @@
     color: rgb(244, 241, 250);
 }
 
-.bgColor {
-    background-color: #f5f2fb;
-    /* background-color: #d7c7f4; */
+
+.btnPromt{
+    background-color: #bb9fef;
 }
 
+.btnPromt:hover{
+    cursor: pointer;
+    background-color: rgb(244, 241, 250);
+}
 
 .pastCon {
     width: 175px;

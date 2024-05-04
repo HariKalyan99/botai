@@ -5,7 +5,7 @@ import BotSpace from './components/Dashboard/BotSpace'
 function App() {
 
   return (
-    <div>
+    <div >
       <BotSpace />
     </div>
   )
