@@ -1,0 +1,25 @@
+.editBtn {
+    font-size: 1.7rem;
+}
+
+.editBtn:hover {
+    cursor: pointer;
+    color: rgb(244, 241, 250);
+}
+
+.bgColor {
+    background-color: #f5f2fb;
+    /* background-color: #d7c7f4; */
+}
+
+
+.pastCon {
+    width: 175px;
+    background-color: #D7C7F4;
+}
+
+.pastCon:hover {
+   cursor: pointer;
+   background: rgb(244, 241, 250);
+}
+
