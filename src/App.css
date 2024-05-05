@@ -7,6 +7,14 @@
     color: rgb(244, 241, 250);
 }
 
+.log {
+    width: 100;
+}
+
+.log:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
 
 .btnPromt{
     background-color: #bb9fef;

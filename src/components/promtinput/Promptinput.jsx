@@ -1,17 +1,26 @@
 import { Grid } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 
-const Promptinput = () => {
+const Promptinput = ({handleQuestion}) => {
+
+  const [question, setQuestion] = useState("");
+
+  const handleForm = (e) => {
+    e.preventDefault();
+    handleQuestion(question)
+  }
   return (
     <Grid item xs={12} sx={{marginTop: "20px"}}>
-    <div className="d-flex justify-content-center align-items-center w-100 gap-3 h-100 pt-5">
+    <form onSubmit={(e) => handleForm(e)}  className="d-flex justify-content-center align-items-center w-100 gap-3 h-100 pt-5">
       <input
         type="text"
         className=" flex-grow-1 p-3"
         style={{ height: "41px" }}
+        onChange={(e) => setQuestion(e.target.value)}
       />
       <button
         className="btnPromt fw-bold"
+        type='submit'
         style={{
           borderRadius: "5px",
           height: "41px",
@@ -24,6 +33,7 @@ const Promptinput = () => {
       </button>
       <button
         className="btnPromt fw-bold"
+        type='button'
         style={{
           borderRadius: "5px",
           height: "41px",
@@ -34,7 +44,7 @@ const Promptinput = () => {
       >
         Save
       </button>
-    </div>
+    </form>
 </Grid>
   )
 }

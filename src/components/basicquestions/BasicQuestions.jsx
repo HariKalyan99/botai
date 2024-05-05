@@ -15,7 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
   height: "111px",
 }));
-const BasicQuestions = () => {
+const BasicQuestions = ({handleQuestion}) => {
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
       <Grid container rowSpacing={4} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -115,7 +115,7 @@ const BasicQuestions = () => {
             </Typography>
           </Item>
         </Grid>
-        <Promptinput />
+        <Promptinput handleQuestion={handleQuestion}/>
       </Grid>
     </Box>
   );

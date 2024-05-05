@@ -3,7 +3,7 @@ import React from 'react'
 import logoMain from "../../assets/logo.svg";
 import BasicQuestions from '../basicquestions/BasicQuestions';
 
-const DefaultPromts = () => {
+const DefaultPromts = ({handleQuestion}) => {
   return (
     <div>
         <div className="d-flex flex-column justify-content-center align-items-center pt-5 pb-5" >
@@ -19,7 +19,7 @@ const DefaultPromts = () => {
           </div>
         </div>
         <div className="pt-5 pb-5 mt-3">
-          <BasicQuestions />
+          <BasicQuestions handleQuestion={handleQuestion}/>
         </div>
     </div>
   )
