@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material'
 import React, { useState } from 'react'
 
-const Promptinput = ({handleQuestion}) => {
+const Promptinput = ({handleQuestion, saveToLocal}) => {
 
   const [question, setQuestion] = useState("");
 
@@ -10,7 +10,7 @@ const Promptinput = ({handleQuestion}) => {
     handleQuestion(question)
   }
   return (
-    <Grid item xs={12} sx={{marginTop: "20px"}}>
+    <Grid item xs={12} sx={{marginTop: "20px", marginBottom: "2rem"}}>
     <form onSubmit={(e) => handleForm(e)}  className="d-flex justify-content-center align-items-center w-100 gap-3 h-100 pt-5">
       <input
         type="text"
@@ -41,6 +41,7 @@ const Promptinput = ({handleQuestion}) => {
           fontsize: "20px",
           border: "none",
         }}
+        onClick={() => saveToLocal()}
       >
         Save
       </button>

@@ -3,7 +3,7 @@ import React from 'react'
 import logoMain from "../../assets/logo.svg";
 import BasicQuestions from '../basicquestions/BasicQuestions';
 
-const DefaultPromts = ({handleQuestion}) => {
+const DefaultPromts = ({handleQuestion, entryText}) => {
   return (
     <div>
         <div className="d-flex flex-column justify-content-center align-items-center pt-5 pb-5" >
@@ -11,7 +11,7 @@ const DefaultPromts = ({handleQuestion}) => {
             <Typography
               sx={{ fontSize: "28px", fontWeight: "bold" }}
             >
-              How Can I Help You Today?
+              {entryText}
             </Typography>
           </div>
           <div className="pt-2 pb-5">

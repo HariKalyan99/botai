@@ -26,14 +26,9 @@ import PromtsViewer from "../Promtsviewer/PromtsViewer";
 import Promptinput from "../promtinput/Promptinput";
 import Newpromts from "../newpromt/Newpromts";
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(2),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-  height: "111px",
-}));
+import {v4 as uuidV4} from 'uuid';
+
+
 
 const drawerWidth = 208;
 
@@ -299,9 +294,9 @@ function BotSpace(props) {
   const [showPage, setShowPage] = React.useState("defaultPromts");
 
   const [getQuestion, setQuestion] = React.useState([]);
-  const [getAnswer, setAnswer] = React.useState([]);
   const [questionAnswers, setQuestionAnswers] = React.useState([]);
-  const [promtList, setPromtList] = React.useState(prompts)
+  const [promtList, setPromtList] = React.useState(prompts);
+
   
 
 
@@ -324,14 +319,34 @@ function BotSpace(props) {
     setShowPage(pg);
   };
 
+
+  React.useEffect(() => {
+    let localStore = localStorage.getItem('promtLists');
+    if(!localStore){
+      localStorage.setItem('promtLists', JSON.stringify([]));
+    }
+  }, [])
+
   React.useEffect(() => {
     let now = new Date();
     if(getQuestion.length > 0){
       let promtQuestion = promtList.find(x => x.question === getQuestion);
-      setQuestionAnswers([...questionAnswers, {...promtQuestion, time: now.toTimeString()}]);
+      setQuestionAnswers([...questionAnswers, {...promtQuestion, time: now.toLocaleString(), rating: 0, feedBack: ""}]);
       handlePageChange("newPromt")
     }
   }, [getQuestion])
+
+
+  const handleFeedBack = (str) => {
+    
+    console.log(str);
+  }
+
+  const handleRating = (rate) => {
+    console.log(rate)
+  }
+
+  
 
   const handleQuestion = (question) => {
     if(question === getQuestion){
@@ -339,6 +354,14 @@ function BotSpace(props) {
     }else{
       setQuestion(question);
     }
+  }
+
+  const saveToLocal = () => {
+    let fromLocal = JSON.parse(localStorage.getItem('promtLists'));
+    let idList = {id: uuidV4(), list: questionAnswers}
+    localStorage.setItem('promtLists', JSON.stringify([...fromLocal, idList]));
+    setQuestionAnswers([]);
+    handlePageChange("defaultPromts")
   }
 
   
@@ -352,7 +375,9 @@ function BotSpace(props) {
         <img
           src={logo}
           alt="Logo"
-          onClick={() => handlePageChange("defaultPromts")}
+          onClick={() => {handlePageChange("defaultPromts");
+    setQuestionAnswers([]);
+          }}
           className="log"
         />
         <Typography sx={{ fontSize: "20px" }}>New Chat</Typography>
@@ -461,7 +486,8 @@ function BotSpace(props) {
       >
         <Toolbar />
         {/* add this into a seperate component */}
-        {showPage === "defaultPromts" ? <DefaultPromts handleQuestion={handleQuestion} /> : <Newpromts questionAnswers={questionAnswers} handleQuestion={handleQuestion} />}
+        {showPage === "defaultPromts" ? <DefaultPromts entryText={"How Can I Help You Today?"} handleQuestion={handleQuestion} /> : <Newpromts saveToLocal={saveToLocal} questionAnswers={questionAnswers} handleQuestion={handleQuestion} handleFeedBack={handleFeedBack}
+handleRating={handleRating} />}
       </Box>
     </Box>
   );
