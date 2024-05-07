@@ -297,7 +297,8 @@ function BotSpace(props) {
   const [questionAnswers, setQuestionAnswers] = React.useState([]);
   const [promtList, setPromtList] = React.useState(prompts);
 
-  
+  const [feedBackPersist, setFeedBackPersist] = React.useState({});
+  const [ratingPersist, setRatingPersist] = React.useState({});
 
 
   const handleDrawerClose = () => {
@@ -336,14 +337,35 @@ function BotSpace(props) {
     }
   }, [getQuestion])
 
+  React.useEffect(() => {
+    let changeFeed = questionAnswers.find(x => x.id === feedBackPersist.id);
+    let index = questionAnswers.findIndex(x => x.id === feedBackPersist.id);
+    if(changeFeed){
+      changeFeed.feedBack = feedBackPersist.str
+    questionAnswers.splice(index, changeFeed)
+    setQuestionAnswers(questionAnswers)
+    }
+  }, [feedBackPersist])
 
-  const handleFeedBack = (str) => {
-    
-    console.log(str);
+  React.useEffect(() => {
+    // console.log(ratingPersist.rate, ratingPersist.id, questionAnswers);
+
+    let changeFeed = questionAnswers.find(x => x.id === ratingPersist.id);
+    let index = questionAnswers.findIndex(x => x.id === ratingPersist.id);
+    if(changeFeed){
+      changeFeed.rating = ratingPersist.rate
+    questionAnswers.splice(index, changeFeed)
+    setQuestionAnswers(questionAnswers)
+    }
+  }, [ratingPersist])
+
+
+  const handleFeedBack = (str, id) => {
+    setFeedBackPersist({str, id});
   }
 
-  const handleRating = (rate) => {
-    console.log(rate)
+  const handleRating = (rate, id) => {
+    setRatingPersist({rate, id})
   }
 
   

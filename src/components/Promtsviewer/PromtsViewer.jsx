@@ -9,6 +9,11 @@ import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import { TextareaAutosize } from "@mui/base";
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import ClearIcon from '@mui/icons-material/Clear';
+
+
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -24,8 +29,8 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
+  width: 500,
+  bgcolor: "#FAF7FF",  
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
@@ -49,14 +54,22 @@ const PromtsViewer = ({ promts, handleRating, handleFeedBack }) => {
     setTimeout(() => {
       setShowResponse(promts.response);
     }, 1000);
+
+    
   }, []);
 
-  const handleFeed = (e) => {
+
+  // send the id along with the rating and feedback to the parent component!
+  const handleFeed = (e, id) => {
     e.preventDefault();
-    handleFeedBack(feedback);
+    handleFeedBack(feedback, id);
     setShowFeedBack(feedback);
     handleClose();
   };
+
+
+
+  
   return (
     <>
       <Grid item xs={12} rowSpacing={4}>
@@ -154,7 +167,7 @@ const PromtsViewer = ({ promts, handleRating, handleFeedBack }) => {
                           value={rating}
                           onChange={(event) => {
                             setRating(event.target.value);
-                            handleRating(event.target.value);
+                            handleRating(event.target.value, promts.id);
                           }}
                         />
                       )}
@@ -169,33 +182,36 @@ const PromtsViewer = ({ promts, handleRating, handleFeedBack }) => {
                         aria-describedby="modal-modal-description"
                       >
                         <Box sx={style}>
+                          <Box sx={{display: "flex", justifyContent: "space-between"}}>
                           <Typography
                             id="modal-modal-title"
                             variant="h6"
                             component="h2"
                           >
-                            Submit your feedback
+                            {<TipsAndUpdatesIcon />} Provide Additional Feedback
                           </Typography>
-                          <form
-                            onSubmit={(e) => handleFeed(e)}
-                            className="d-flex flex-column justify-content-center align-items-center gap-3"
-                          >
-                            <input
-                              type="text"
-                              style={{ width: "100%", height: "100px" }}
-                              value={feedback}
-                              onChange={(e) => setFeedback(e.target.value)}
-                            />
-                            <button className="btn btn-dark" type="submit">
-                              Submit
-                            </button>
-                            <button
-                              className="btn btn-dark"
+                          <button
+                              style={{border: "none", backgroundColor: "transparent"}}
                               onClick={() => handleClose()}
                               type="button"
                             >
-                              Close
+                              <ClearIcon />
                             </button>
+                          </Box>
+                          <form
+                            onSubmit={(e) => handleFeed(e, promts.id)}
+                            className="d-flex flex-column justify-content-center align-items-center gap-3"
+                          >
+                            <textarea
+                              type="text"
+                              style={{ width: "100%", height: "100px", padding: "10px", border: "none" }}
+                              value={feedback}
+                              onChange={(e) => setFeedback(e.target.value)}
+                            />
+                            {feedback && <button style={{backgroundColor: "#D7C7F4", width: "100px", height: "50px", border: "none", borderRadius: "0.5rem"}} type="submit" >
+                              Submit
+                            </button>}
+                           
                           </form>
                         </Box>
                       </Modal>
