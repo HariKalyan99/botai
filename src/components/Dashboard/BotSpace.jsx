@@ -27,6 +27,7 @@ import Promptinput from "../promtinput/Promptinput";
 import Newpromts from "../newpromt/Newpromts";
 
 import {v4 as uuidV4} from 'uuid';
+import Pastconversations from "../Pastconversations/Pastconversations";
 
 
 
@@ -411,6 +412,7 @@ function BotSpace(props) {
       <div
         className="d-flex justify-content-center align-items-center pastCon"
         style={{ height: "39px", borderRadius: "8px" }}
+        onClick={() => handlePageChange("pastConversation")}
       >
         <Typography sx={{ fontSize: "16px", fontWeight: "bold" }}>
           Past Conversations
@@ -508,8 +510,8 @@ function BotSpace(props) {
       >
         <Toolbar />
         {/* add this into a seperate component */}
-        {showPage === "defaultPromts" ? <DefaultPromts entryText={"How Can I Help You Today?"} handleQuestion={handleQuestion} /> : <Newpromts saveToLocal={saveToLocal} questionAnswers={questionAnswers} handleQuestion={handleQuestion} handleFeedBack={handleFeedBack}
-handleRating={handleRating} />}
+        {showPage === "defaultPromts" ? <DefaultPromts entryText={"How Can I Help You Today?"} handleQuestion={handleQuestion} /> : showPage === "newPromt" ? <Newpromts saveToLocal={saveToLocal} questionAnswers={questionAnswers} handleQuestion={handleQuestion} handleFeedBack={handleFeedBack}
+handleRating={handleRating} /> : <Pastconversations />}
       </Box>
     </Box>
   );
