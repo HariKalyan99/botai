@@ -3,7 +3,7 @@ import React from 'react'
 import logoMain from "../../assets/logo.svg";
 import BasicQuestions from '../basicquestions/BasicQuestions';
 
-const DefaultPromts = ({handleQuestion, entryText}) => {
+const DefaultPromts = ({handleQuestion, entryText, handleGeo}) => {
 
   if(entryText === "Conversation History"){
     return (
@@ -37,7 +37,7 @@ const DefaultPromts = ({handleQuestion, entryText}) => {
             </div>
           </div>
           <div className="pt-5 pb-5 mt-3">
-            <BasicQuestions handleQuestion={handleQuestion}/>
+            <BasicQuestions handleQuestion={handleQuestion} handleGeo={handleGeo}/>
           </div>
       </div>
     )

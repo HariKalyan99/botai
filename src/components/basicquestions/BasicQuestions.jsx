@@ -18,9 +18,9 @@ const Item = styled(Paper)(({ theme }) => ({
 const BasicQuestions = ({handleQuestion}) => {
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
-      <Grid container rowSpacing={4} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid container rowSpacing={4} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
         <Grid item xs={12} sm={6}>
-          <Item>
+          <Item onClick={() => handleQuestion("Hi, what is the weather")}>
             <Typography
               sx={{
                 fontSize: {xs: "20px",  sm: "15px", md: "20px"},
@@ -43,8 +43,10 @@ const BasicQuestions = ({handleQuestion}) => {
             </Typography>
           </Item>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Item>
+        <Grid item xs={12} sm={6} >
+          <Item onClick={() => {
+            handleQuestion("Hi, what is my location");
+          }}>
             <Typography
               sx={{
                 fontSize: {xs: "20px",  sm: "15px", md: "20px"},
@@ -67,8 +69,8 @@ const BasicQuestions = ({handleQuestion}) => {
             </Typography>
           </Item>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Item>
+        <Grid item xs={12} sm={6} >
+          <Item onClick={() => handleQuestion("Hi, what is the temperature")}>
             <Typography
               sx={{
                 fontSize: {xs: "20px",  sm: "15px", md: "20px"},
@@ -91,8 +93,8 @@ const BasicQuestions = ({handleQuestion}) => {
             </Typography>
           </Item>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Item>
+        <Grid item xs={12} sm={6} >
+          <Item onClick={() => handleQuestion("Hi, how are you")}>
             <Typography
               sx={{
                 fontSize: {xs: "20px",  sm: "15px", md: "20px"},
