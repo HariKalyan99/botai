@@ -20,7 +20,7 @@ const BasicQuestions = ({handleQuestion}) => {
     <Box sx={{ width: "100%", height: "100%" }}>
       <Grid container rowSpacing={4} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
         <Grid item xs={12} sm={6}>
-          <Item onClick={() => handleQuestion("Hi, what is the weather")}>
+          <Item onClick={() => handleQuestion("Hi, what is the weather")} className="itemHover">
             <Typography
               sx={{
                 fontSize: {xs: "20px",  sm: "15px", md: "20px"},
@@ -28,6 +28,7 @@ const BasicQuestions = ({handleQuestion}) => {
                 textAlign: "left",
                 color: "black",
               }}
+              
             >
               Hi, what is the weather
             </Typography>
@@ -45,8 +46,8 @@ const BasicQuestions = ({handleQuestion}) => {
         </Grid>
         <Grid item xs={12} sm={6} >
           <Item onClick={() => {
-            handleQuestion("Hi, what is my location");
-          }}>
+            handleQuestion("Hi, what is my location"); 
+          }} className="itemHover">
             <Typography
               sx={{
                 fontSize: {xs: "20px",  sm: "15px", md: "20px"},
@@ -70,7 +71,7 @@ const BasicQuestions = ({handleQuestion}) => {
           </Item>
         </Grid>
         <Grid item xs={12} sm={6} >
-          <Item onClick={() => handleQuestion("Hi, what is the temperature")}>
+          <Item onClick={() => handleQuestion("Hi, what is the temperature")} className="itemHover">
             <Typography
               sx={{
                 fontSize: {xs: "20px",  sm: "15px", md: "20px"},
@@ -94,7 +95,7 @@ const BasicQuestions = ({handleQuestion}) => {
           </Item>
         </Grid>
         <Grid item xs={12} sm={6} >
-          <Item onClick={() => handleQuestion("Hi, how are you")}>
+          <Item onClick={() => handleQuestion("Hi, how are you")} className="itemHover">
             <Typography
               sx={{
                 fontSize: {xs: "20px",  sm: "15px", md: "20px"},

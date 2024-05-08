@@ -357,7 +357,7 @@ function BotSpace(props) {
     try{
       const {data} = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=a3b0fdda2f5540b2a46111734240304&q=${city.city}&days=1&aqi=yes&alerts=yes`);
       const {current} = data;
-      localStorage.setItem('weather', JSON.stringify({tempC: current["temp_c"]+'°', tempf: current["temp_f"]+'f'}))
+      localStorage.setItem('weather', JSON.stringify({tempC: current["temp_c"]+'°', tempf: current["temp_f"]+'F'}))
     }catch(error){
       console.log("Error", error)
     }
@@ -397,7 +397,7 @@ function BotSpace(props) {
     if(getQuestion === "Hi, what is the temperature" && getQuestion.length > 0){
       let weather = JSON.parse(localStorage.getItem('weather'));
       let promtQuestion = promtList.find(x => x.question === getQuestion);
-      setQuestionAnswers([...questionAnswers, {...promtQuestion, response: `temperature based on your location is ${weather.tempC}, ${weather.tempf}`,time: now.toLocaleString(), rating: 0, feedBack: ""}]);
+      setQuestionAnswers([...questionAnswers, {...promtQuestion, response: `Temperature based on your location is ${weather.tempC} celcius, ${weather.tempf} fahrenheit`,time: now.toLocaleString(), rating: 0, feedBack: ""}]);
       handlePageChange("newPromt")
     }
     else if(getQuestion === "Hi, what is my location" && getQuestion.length > 0){
