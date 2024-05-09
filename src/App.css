@@ -45,3 +45,14 @@
     cursor: pointer;
     background-color: #D7C7F4;
 }
+
+
+
+.btnHover {
+    background-color: #D7C7F4;
+} 
+
+.btnHover:hover {
+    cursor: pointer;
+    background-color: #bb9fef;
+}

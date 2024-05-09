@@ -29,7 +29,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 500,
+  width: 400,
   bgcolor: "#FAF7FF",  
   border: "2px solid #000",
   boxShadow: 24,
@@ -169,6 +169,7 @@ const PromtsViewer = ({ promts, handleRating, handleFeedBack }) => {
                             setRating(event.target.value);
                             handleRating(event.target.value, promts.id);
                           }}
+                          sx={{color: "#bb8fef"}}
                         />
                       )}
                     </div>
@@ -208,7 +209,7 @@ const PromtsViewer = ({ promts, handleRating, handleFeedBack }) => {
                               value={feedback}
                               onChange={(e) => setFeedback(e.target.value)}
                             />
-                            {feedback && <button style={{backgroundColor: "#D7C7F4", width: "100px", height: "50px", border: "none", borderRadius: "0.5rem"}} type="submit" >
+                            {feedback && <button style={{ width: "100px", height: "50px", border: "none", borderRadius: "0.5rem"}} type="submit" className="btnHover">
                               Submit
                             </button>}
                            

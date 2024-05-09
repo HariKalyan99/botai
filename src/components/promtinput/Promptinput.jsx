@@ -7,7 +7,8 @@ const Promptinput = ({handleQuestion, saveToLocal}) => {
 
   const handleForm = (e) => {
     e.preventDefault();
-    handleQuestion(question)
+    handleQuestion(question);
+    setQuestion("")
   }
   return (
     <Grid item xs={12} sx={{marginTop: "20px", marginBottom: "2rem"}}>
@@ -16,6 +17,7 @@ const Promptinput = ({handleQuestion, saveToLocal}) => {
         type="text"
         className=" flex-grow-1 p-3"
         style={{ height: "41px" }}
+        value={question}
         onChange={(e) => setQuestion(e.target.value)}
       />
       <button

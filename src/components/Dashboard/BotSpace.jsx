@@ -591,6 +591,9 @@ function BotSpace(props) {
           Past Conversations
         </Typography>
       </div>
+      <form onSubmit={() => localStorage.clear()}>
+      <button type="submit" className="btn btn-dark">Reset BotAi</button>
+      </form>
       <Typography sx={{ fontSize: "16px", fontWeight: "bold" }}>
         your Ip: {ipAddress}
       </Typography>
