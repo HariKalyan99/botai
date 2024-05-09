@@ -391,7 +391,7 @@ function BotSpace(props) {
 
   const handleGeo = async () => {
     try {
-      const { data } = await axios.get(`https://members.ip-api.com/${ipAddress}`);
+      const { data } = await axios.get(`http://ip-api.com/${ipAddress}`);
       localStorage.setItem(
         "geo",
         JSON.stringify({ city: data.city, country: data.country })

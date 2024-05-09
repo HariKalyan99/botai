@@ -131,7 +131,7 @@ const PromtsViewer = ({ promts, handleRating, handleFeedBack }) => {
             height: "100%",
           }}
         >
-          <img src={logoMain} alt="bot_logo" />
+          <img src={"https://iconape.com/wp-content/files/dz/36366/svg/buddy.svg"} height={60} alt="bot_logo" />
           <div>
             <Typography
               sx={{
