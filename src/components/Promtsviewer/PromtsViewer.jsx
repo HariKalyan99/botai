@@ -11,7 +11,7 @@ import Button from "@mui/material/Button";
 import { TextareaAutosize } from "@mui/base";
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import ClearIcon from '@mui/icons-material/Clear';
-
+import logoMain from "../../assets/logo.svg";
 
 
 
@@ -131,7 +131,7 @@ const PromtsViewer = ({ promts, handleRating, handleFeedBack }) => {
             height: "100%",
           }}
         >
-          <img src={you} alt="your_logo" />
+          <img src={logoMain} alt="bot_logo" />
           <div>
             <Typography
               sx={{
